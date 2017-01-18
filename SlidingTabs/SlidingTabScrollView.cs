@@ -98,6 +98,8 @@ namespace SlidingTabs
                     value.PageSelected += Value_PageSelected;
                     value.PageScrollStateChanged += Value_PageScrollStateChanged;
                     value.PageScrolled += Value_PageScrolled;
+
+                    PopulateTabStrip();
                 }
             }
         }
@@ -158,7 +160,7 @@ namespace SlidingTabs
             for (int i = 0; i < adapter.Count; i++)
             {
                 TextView tabView = CreateDefaultTabView(Context);
-                tabView.Text = i.ToString();
+                tabView.Text = ((SlidingTabsFragment.SamplePagerAdapter)adapter).GetHeaderTitle(i);
                 tabView.SetTextColor(Android.Graphics.Color.Black);
                 tabView.Tag = i;
                 tabView.Click += TabView_Click;
